@@ -54,7 +54,7 @@ public class AlarmViewModel extends AndroidViewModel {
         c.set(Calendar.YEAR, t[4]);
         c.set(Calendar.SECOND, 0);
 
-        Log.i(TAG, "time: " + t[0] + ":" + t[1] + " " + t[2] + "/" + t[2] + "/"+ t[4]);
+        Log.i(TAG, "time: " + t[0] + ":" + t[1] + " " + t[2] + "/" + t[3] + "/"+ t[4]);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);

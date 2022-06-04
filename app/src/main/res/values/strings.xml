@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyAlarmClock</string>
+    <string name="btDismiss">Dismiss</string>
 </resources>
