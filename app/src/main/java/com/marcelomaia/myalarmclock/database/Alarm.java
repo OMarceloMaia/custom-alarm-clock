@@ -18,6 +18,12 @@ public class Alarm {
     @ColumnInfo(name = "date")
     public String date;
 
+    @ColumnInfo(name = "monthlyRecurrence")
+    public Boolean monthlyRecurrence;
+
+    @ColumnInfo(name = "recurrence")
+    public String recurrence;
+
     @ColumnInfo(name = "active")
     public boolean active;
 }

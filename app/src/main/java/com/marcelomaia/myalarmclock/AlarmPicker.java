@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -22,6 +24,8 @@ public class AlarmPicker extends AppCompatActivity {
     String TAG = "MACAlarmPicker";
 
     TextView name, time, date;
+    Switch monthlyRecurrence;
+    EditText recurrence;
     Button confirmAdd;
     Context context = this;
     AlarmViewModel alarmViewModel;
@@ -35,6 +39,8 @@ public class AlarmPicker extends AppCompatActivity {
         name =  findViewById(R.id.tvName);
         time = findViewById(R.id.tvTime);
         date = findViewById(R.id.tvDate);
+        monthlyRecurrence = findViewById(R.id.swMonthlyRecurrence);
+        recurrence = findViewById(R.id.etRecurrence);
         confirmAdd = findViewById(R.id.btConfirmAdd);
 
         Calendar calendar = Calendar.getInstance();
@@ -88,7 +94,7 @@ public class AlarmPicker extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 alarmViewModel = new ViewModelProvider(AlarmPicker.this).get(AlarmViewModel.class);
-                alarmViewModel.addAlarm(AlarmPicker.this, "Teste", t);
+                alarmViewModel.addAlarm(AlarmPicker.this, "Teste", t, monthlyRecurrence.isChecked(), recurrence.getText().toString());
                 finish();
             }
         });
