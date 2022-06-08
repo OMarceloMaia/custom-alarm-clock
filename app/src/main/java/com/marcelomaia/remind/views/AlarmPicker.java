@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock;
+package com.marcelomaia.remind.views;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -15,13 +15,14 @@ import android.widget.TimePicker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.marcelomaia.myalarmclock.viewmodels.AlarmViewModel;
+import com.marcelomaia.remind.R;
+import com.marcelomaia.remind.viewmodels.AlarmViewModel;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
 public class AlarmPicker extends AppCompatActivity {
-    String TAG = "MACAlarmPicker";
+    String TAG = "AlarmPicker";
 
     TextView name, time, date;
     Switch monthlyRecurrence;
@@ -94,7 +95,7 @@ public class AlarmPicker extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 alarmViewModel = new ViewModelProvider(AlarmPicker.this).get(AlarmViewModel.class);
-                alarmViewModel.addAlarm(AlarmPicker.this, "Teste", t, monthlyRecurrence.isChecked(), recurrence.getText().toString());
+                alarmViewModel.addAlarm(AlarmPicker.this, "Test", t, monthlyRecurrence.isChecked(), recurrence.getText().toString());
                 finish();
             }
         });

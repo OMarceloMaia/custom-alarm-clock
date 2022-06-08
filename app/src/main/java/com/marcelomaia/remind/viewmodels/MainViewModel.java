@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock.viewmodels;
+package com.marcelomaia.remind.viewmodels;
 
 import android.app.Application;
 
@@ -6,9 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.marcelomaia.myalarmclock.database.Alarm;
-import com.marcelomaia.myalarmclock.database.AlarmRepository;
-import com.marcelomaia.myalarmclock.database.IAlarmRepository;
+import com.marcelomaia.remind.data.Alarm;
+import com.marcelomaia.remind.data.AlarmRepository;
+import com.marcelomaia.remind.data.IAlarmRepository;
 
 import java.util.List;
 
