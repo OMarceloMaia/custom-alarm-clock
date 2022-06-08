@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock;
+package com.marcelomaia.remind;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.marcelomaia.myalarmclock", appContext.getPackageName());
+        assertEquals("com.marcelomaia.remind", appContext.getPackageName());
     }
 }

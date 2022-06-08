@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock.database;
+package com.marcelomaia.remind.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

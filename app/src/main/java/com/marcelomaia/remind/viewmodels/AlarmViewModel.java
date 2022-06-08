@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock.viewmodels;
+package com.marcelomaia.remind.viewmodels;
 
 import static android.content.Context.ALARM_SERVICE;
 
@@ -12,16 +12,16 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.marcelomaia.myalarmclock.database.Alarm;
-import com.marcelomaia.myalarmclock.database.AlarmRepository;
-import com.marcelomaia.myalarmclock.database.IAlarmRepository;
+import com.marcelomaia.remind.data.Alarm;
+import com.marcelomaia.remind.data.AlarmRepository;
+import com.marcelomaia.remind.data.IAlarmRepository;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class AlarmViewModel extends AndroidViewModel {
-    String TAG = "MACAddAlarmViewModel";
+    String TAG = "AlarmViewModel";
 
     public AlarmViewModel(@NonNull Application application) {
         super(application);

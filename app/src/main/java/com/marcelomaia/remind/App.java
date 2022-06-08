@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock;
+package com.marcelomaia.remind;
 
 import android.app.Application;
 import android.app.NotificationChannel;

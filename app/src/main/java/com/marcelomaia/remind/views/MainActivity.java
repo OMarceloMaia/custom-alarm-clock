@@ -1,13 +1,13 @@
-package com.marcelomaia.myalarmclock;
+package com.marcelomaia.remind.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.marcelomaia.myalarmclock.database.AppDatabase;
-import com.marcelomaia.myalarmclock.viewmodels.AlarmListAdapter;
-import com.marcelomaia.myalarmclock.viewmodels.MainViewModel;
+import com.marcelomaia.remind.R;
+import com.marcelomaia.remind.viewmodels.AlarmListAdapter;
+import com.marcelomaia.remind.viewmodels.MainViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
-    public String TAG = "MACMainActivity";
+    public String TAG = "MainActivity";
     private AlarmListAdapter adapter;
     MainViewModel viewModel;
 

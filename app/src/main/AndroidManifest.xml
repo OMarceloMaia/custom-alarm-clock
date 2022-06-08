@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.marcelomaia.myalarmclock">
+    package="com.marcelomaia.remind">
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -8,20 +8,20 @@
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
-        android:name=".App"
+        android:name="com.marcelomaia.remind.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyAlarmClock">
+        android:theme="@style/Theme.Remind">
 
         <activity
-            android:name=".AlarmPicker"
+            android:name="com.marcelomaia.remind.views.AlarmPicker"
             android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.marcelomaia.remind.views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,11 +31,11 @@
         </activity>
 
         <activity
-            android:name=".RingActivity"
+            android:name="com.marcelomaia.remind.views.RingActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName="com.marcelomaia.remind.views.MainActivity" />
 
-        <receiver android:name=".MACReceiver">
+        <receiver android:name="com.marcelomaia.remind.MACReceiver">
             <intent-filter>
                 <action android:name="TRIGGERED_ALARM" />
 
@@ -43,7 +43,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".AlarmService" />
+        <service android:name="com.marcelomaia.remind.service.AlarmService" />
     </application>
 
 </manifest>

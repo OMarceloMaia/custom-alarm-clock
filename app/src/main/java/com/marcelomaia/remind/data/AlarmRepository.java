@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock.database;
+package com.marcelomaia.remind.data;
 
 import android.content.Context;
 import android.util.Log;

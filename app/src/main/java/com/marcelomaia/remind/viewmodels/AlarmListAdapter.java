@@ -1,4 +1,4 @@
-package com.marcelomaia.myalarmclock.viewmodels;
+package com.marcelomaia.remind.viewmodels;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.marcelomaia.myalarmclock.R;
-import com.marcelomaia.myalarmclock.database.Alarm;
+import com.marcelomaia.remind.R;
+import com.marcelomaia.remind.data.Alarm;
 
 import java.util.ArrayList;
 import java.util.List;

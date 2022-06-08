@@ -1,6 +1,6 @@
-package com.marcelomaia.myalarmclock;
+package com.marcelomaia.remind.service;
 
-import static com.marcelomaia.myalarmclock.App.CHANNEL_ID;
+import static com.marcelomaia.remind.App.CHANNEL_ID;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -16,6 +16,9 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.app.TaskStackBuilder;
+
+import com.marcelomaia.remind.R;
+import com.marcelomaia.remind.views.RingActivity;
 
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;
