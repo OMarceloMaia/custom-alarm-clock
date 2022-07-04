@@ -1,4 +1,4 @@
-package com.marcelomaia.remind.views;
+package com.marcelomaia.remind.views.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.marcelomaia.remind.service.AlarmService;
+import com.marcelomaia.remind.views.service.AlarmService;
 import com.marcelomaia.remind.R;
 
 public class RingActivity extends AppCompatActivity {

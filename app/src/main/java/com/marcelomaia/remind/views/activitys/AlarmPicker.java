@@ -1,4 +1,4 @@
-package com.marcelomaia.remind.views;
+package com.marcelomaia.remind.views.activitys;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;

@@ -1,8 +1,5 @@
-package com.marcelomaia.remind.service;
+package com.marcelomaia.remind.views.service;
 
-import static com.marcelomaia.remind.App.CHANNEL_ID;
-
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -13,12 +10,10 @@ import android.os.Vibrator;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.app.TaskStackBuilder;
 
+import com.marcelomaia.remind.data.NotificationHelper;
 import com.marcelomaia.remind.R;
-import com.marcelomaia.remind.views.RingActivity;
+import com.marcelomaia.remind.views.activitys.RingActivity;
 
 public class AlarmService extends Service {
     private MediaPlayer mediaPlayer;
@@ -34,31 +29,20 @@ public class AlarmService extends Service {
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        NotificationHelper.showNotification(this);
+
         Intent notificationIntent = new Intent(this, RingActivity.class);
 
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(notificationIntent);
 
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addNextIntentWithParentStack(notificationIntent);
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-//        String alarmTitle = String.format("%s Alarm", intent.getStringExtra("TITLE")); // TODO: 03/06/2022 Make title
-
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Alarm")
-                .setContentText("Triggered Alarm")
-                .setSmallIcon(R.drawable.ic_alarm_black_24dp)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_CALL)
-                .setFullScreenIntent(pendingIntent, true);
-
-        notificationBuilder.setContentIntent(pendingIntent);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1, notificationBuilder.build());
+//        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+//        stackBuilder.addNextIntentWithParentStack(notificationIntent);
+//        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         mediaPlayer.start();
 

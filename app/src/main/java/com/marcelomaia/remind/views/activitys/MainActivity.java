@@ -1,4 +1,4 @@
-package com.marcelomaia.remind.views;
+package com.marcelomaia.remind.views.activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
