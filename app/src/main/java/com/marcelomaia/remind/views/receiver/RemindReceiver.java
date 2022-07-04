@@ -1,4 +1,4 @@
-package com.marcelomaia.remind;
+package com.marcelomaia.remind.views.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,10 +7,11 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.marcelomaia.remind.service.AlarmService;
+import com.marcelomaia.remind.views.service.AlarmService;
 
-public class MACReceiver extends BroadcastReceiver {
-    String TAG = "MACReceiver";
+public class RemindReceiver extends BroadcastReceiver {
+    private static final String TAG = "RemindReceiver";
+
     @Override
     public void onReceive(Context context, Intent intent) {
 

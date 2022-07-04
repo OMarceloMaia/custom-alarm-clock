@@ -15,6 +15,8 @@ import androidx.lifecycle.AndroidViewModel;
 import com.marcelomaia.remind.data.Alarm;
 import com.marcelomaia.remind.data.AlarmRepository;
 import com.marcelomaia.remind.data.IAlarmRepository;
+import com.marcelomaia.remind.usecases.RecurrenceMonthly;
+import com.marcelomaia.remind.usecases.SingleAlarm;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,82 +51,9 @@ public class AlarmViewModel extends AndroidViewModel {
         Intent intent = new Intent("TRIGGERED_ALARM");
 
         if (monthlyRecurrence) {
-            AddAlarmWithRecurrence(context, t, intent, recurrence);
+            RecurrenceMonthly.AddAlarm(context, t, intent, recurrence);
         } else {
-            AddAlarmWithoutRecurrence(context, t, intent);
+            SingleAlarm.AddAlarm(context, t, intent);
         }
-    }
-
-    public void AddAlarmWithoutRecurrence(Context context, int[] t, Intent intent) {
-
-        Calendar c = Calendar.getInstance();
-        c.setTimeInMillis(System.currentTimeMillis());
-        c.set(Calendar.HOUR_OF_DAY, t[0]);
-        c.set(Calendar.MINUTE, t[1]);
-        c.set(Calendar.DAY_OF_MONTH, t[2]);
-        c.set(Calendar.MONTH, t[3]);
-        c.set(Calendar.YEAR, t[4]);
-        c.set(Calendar.SECOND, 0);
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, (int) c.getTimeInMillis(), intent, 0);
-
-        Log.i(TAG, "Time: " + c.getTime());
-
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-
-        AlarmManager.AlarmClockInfo alarmClockInfo;
-        alarmClockInfo = new AlarmManager.AlarmClockInfo(c.getTimeInMillis(), pendingIntent);
-        alarmManager.setAlarmClock(alarmClockInfo, pendingIntent);
-    }
-
-    public void AddAlarmWithRecurrence(Context context, int[] t, Intent intent, String recurrence) {
-        List<Integer> days = getDays(recurrence);
-        Log.i(TAG, "days: " + days);
-
-        Calendar c = Calendar.getInstance();
-        for (int day : days) {
-
-            c.setTimeInMillis(System.currentTimeMillis());
-            c.set(Calendar.HOUR_OF_DAY, t[0]);
-            c.set(Calendar.MINUTE, t[1]);
-            c.set(Calendar.DAY_OF_MONTH, day);
-            c.set(Calendar.MONTH, t[3]);
-            c.set(Calendar.YEAR, t[4]);
-            c.set(Calendar.SECOND, 0);
-
-            Log.i(TAG, "Time: " + c.getTime());
-
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, (int) c.getTimeInMillis(), intent, 0);
-
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-//            alarmManager.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY * 30, pendingIntent);
-
-            AlarmManager.AlarmClockInfo alarmClockInfo;
-            alarmClockInfo = new AlarmManager.AlarmClockInfo(c.getTimeInMillis(), pendingIntent);
-            alarmManager.setAlarmClock(alarmClockInfo, pendingIntent);
-        }
-    }
-
-    public List<Integer> getDays(String recurrence) {
-        String[] strings = recurrence.split("/");
-        List<Integer> days = new ArrayList<Integer>();
-
-        for (String string : strings) {
-            int indexLine = string.indexOf("-");
-
-            if(indexLine != -1) {
-                int start = (Integer.parseInt(string.substring(0, indexLine)));
-                int end = (Integer.parseInt(string.substring(indexLine + 1, string.length())));
-
-                for (int i = start; i <= end; i++) {
-                    days.add(i);
-                }
-            } else {
-                days.add(Integer.parseInt(string));
-            }
-        }
-        return days;
     }
 }
