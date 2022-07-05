@@ -30,11 +30,12 @@ public class AlarmViewModel extends AndroidViewModel {
     }
 
     public void addAlarm(Context context, String name, int[] t, boolean monthlyRecurrence, String recurrence) {
-        addAlarmManager(context, t, monthlyRecurrence, recurrence);
-        saveAlarm(name, t[0] + ":" + t[1], t[2] + "/" + t[3] + "/" + t[4], monthlyRecurrence, recurrence, true);
+        long id = saveAlarm(name, t[0] + ":" + t[1], t[2] + "/" + t[3] + "/" + t[4], monthlyRecurrence, recurrence, true);
+        Log.i(TAG, "addAlarm: " + id);
+        addAlarmManager(context, t, monthlyRecurrence, recurrence, id);
     }
 
-    public void saveAlarm(String name, String time, String date, boolean monthlyRecurrence, String recurrence, boolean active) {
+    public long saveAlarm(String name, String time, String date, boolean monthlyRecurrence, String recurrence, boolean active) {
         IAlarmRepository repository = AlarmRepository.getInstance(getApplication().getApplicationContext());
 
         Alarm alarm = new Alarm();
@@ -44,16 +45,16 @@ public class AlarmViewModel extends AndroidViewModel {
         alarm.monthlyRecurrence = monthlyRecurrence;
         alarm.recurrence = recurrence;
         alarm.active = active;
-        repository.insert(alarm);
+        return repository.insert(alarm);
     }
 
-    public void addAlarmManager(Context context, int[] t, boolean monthlyRecurrence, String recurrence) {
+    public void addAlarmManager(Context context, int[] t, boolean monthlyRecurrence, String recurrence, long id) {
         Intent intent = new Intent("TRIGGERED_ALARM");
 
         if (monthlyRecurrence) {
-            RecurrenceMonthly.AddAlarm(context, t, intent, recurrence);
+            RecurrenceMonthly.AddAlarm(context, t, intent, recurrence, id);
         } else {
-            SingleAlarm.AddAlarm(context, t, intent);
+            SingleAlarm.AddAlarm(context, t, intent, id);
         }
     }
 }

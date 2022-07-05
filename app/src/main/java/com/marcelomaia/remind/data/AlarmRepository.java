@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 public class AlarmRepository implements IAlarmRepository {
-    String TAG = "MAC" + getClass().getName();
+    private static final String TAG = "AlarmRepository";
     private static  IAlarmRepository INSTANCE;
     private AppDatabase mDatabase;
 
@@ -28,8 +28,8 @@ public class AlarmRepository implements IAlarmRepository {
         return mDatabase.alarmDao().getAll();
     }
 
-    public void insert(Alarm... alarms) {
+    public long insert(Alarm alarm) {
         Log.i(TAG, "insert: called");
-        mDatabase.alarmDao().insertAll(alarms);
+        return mDatabase.alarmDao().insertAlarm(alarm);
     }
 }
