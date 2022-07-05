@@ -13,7 +13,7 @@ import java.util.Calendar;
 public class SingleAlarm {
     private static final String TAG = "SingleAlarm";
 
-    public static void AddAlarm(Context context, int[] t, Intent intent) {
+    public static void AddAlarm(Context context, int[] t, Intent intent, long alarmId) {
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(System.currentTimeMillis());
         c.set(Calendar.HOUR_OF_DAY, t[0]);
@@ -23,7 +23,8 @@ public class SingleAlarm {
         c.set(Calendar.YEAR, t[4]);
         c.set(Calendar.SECOND, 0);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, (int) c.getTimeInMillis(), intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, (int) alarmId, intent,
+                0);
 
         Log.i(TAG, "Time: " + c.getTime());
 

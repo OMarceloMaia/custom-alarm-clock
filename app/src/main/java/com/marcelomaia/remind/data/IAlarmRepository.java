@@ -8,5 +8,5 @@ public interface IAlarmRepository {
 
     public LiveData<List<Alarm>> getAll();
 
-    public void insert(Alarm... alarms);
+    public long insert(Alarm alarm);
 }

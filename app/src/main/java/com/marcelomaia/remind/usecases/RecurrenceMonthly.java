@@ -15,7 +15,8 @@ import java.util.List;
 public class RecurrenceMonthly {
     private static final String TAG = "RecurrenceMonthly";
 
-    public static void AddAlarm(Context context, int[] t, Intent intent, String recurrence) {
+    public static void AddAlarm(Context context, int[] t, Intent intent, String recurrence,
+                                long alarmId) {
         List<Integer> days = getDays(recurrence);
         Log.i(TAG, "days: " + days);
 
@@ -32,8 +33,8 @@ public class RecurrenceMonthly {
 
             Log.i(TAG, "Time: " + c.getTime());
 
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
-                    (int) c.getTimeInMillis(), intent, 0);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, (int) alarmId, intent,
+                    0);
 
             AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
 //            alarmManager.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);

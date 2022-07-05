@@ -20,7 +20,7 @@ public interface AlarmDao {
     Alarm findByName(String nName);
 
     @Insert
-    void insertAll(Alarm... alarms);
+    long insertAlarm(Alarm alarm);
 
     @Delete
     void delete(Alarm alarm);
